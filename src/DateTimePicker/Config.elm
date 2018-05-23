@@ -68,6 +68,7 @@ type alias Config otherConfig msg =
         , autoClose : Bool
         , i18n : I18n
         , usePicker : Bool
+        , language : String
         , attributes : List (Html.Attribute msg)
     }
 
@@ -256,6 +257,7 @@ defaultDatePickerConfig onChange =
     , usePicker = True
     , attributes = []
     , class = defaultClass
+    , language = "en"
     }
 
 

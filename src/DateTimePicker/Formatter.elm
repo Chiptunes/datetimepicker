@@ -14,12 +14,25 @@ module DateTimePicker.Formatter
 
 import Date exposing (Date)
 import Date.Extra.Config.Config_en_us exposing (config)
+import Date.Extra.Config.Config_es_es exposing (config)
 import Date.Extra.Format
 
 
-titleFormatter : Date -> String
-titleFormatter =
-    Date.Extra.Format.format config titlePattern
+titleFormatter : Maybe String -> Date -> String
+titleFormatter lang =
+    let
+        conf =
+            case lang of
+                Nothing ->
+                    Date.Extra.Config.Config_en_us.config
+
+                Just str ->
+                    if str == "es" then
+                        Date.Extra.Config.Config_es_es.config
+                    else
+                        Date.Extra.Config.Config_en_us.config
+    in
+    Date.Extra.Format.format conf titlePattern
 
 
 titlePattern : String
@@ -27,9 +40,21 @@ titlePattern =
     "%B %Y"
 
 
-dateFormatter : Date -> String
-dateFormatter =
-    Date.Extra.Format.format config datePattern
+dateFormatter : Maybe String -> Date -> String
+dateFormatter lang =
+    let
+        conf =
+            case lang of
+                Nothing ->
+                    Date.Extra.Config.Config_en_us.config
+
+                Just str ->
+                    if str == "es" then
+                        Date.Extra.Config.Config_es_es.config
+                    else
+                        Date.Extra.Config.Config_en_us.config
+    in
+    Date.Extra.Format.format conf datePattern
 
 
 datePattern : String
@@ -37,9 +62,21 @@ datePattern =
     "%d %b %Y"
 
 
-footerFormatter : Date -> String
-footerFormatter =
-    Date.Extra.Format.format config footerPattern
+footerFormatter : Maybe String -> Date -> String
+footerFormatter lang =
+    let
+        conf =
+            case lang of
+                Nothing ->
+                    Date.Extra.Config.Config_en_us.config
+
+                Just str ->
+                    if str == "es" then
+                        Date.Extra.Config.Config_es_es.config
+                    else
+                        Date.Extra.Config.Config_en_us.config
+    in
+    Date.Extra.Format.format conf footerPattern
 
 
 footerPattern : String

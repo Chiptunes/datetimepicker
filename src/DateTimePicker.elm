@@ -268,6 +268,7 @@ view pickerType attributes ((InternalState stateValue) as state) currentDate =
                         (inputChangeHandler config state currentDate)
                    , currentDate
                         |> Maybe.map config.i18n.inputFormat.inputFormatter
+                        |> Just config.language
                         |> Maybe.withDefault ""
                         |> value
                    ]
