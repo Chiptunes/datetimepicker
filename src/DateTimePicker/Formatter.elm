@@ -84,9 +84,21 @@ footerPattern =
     "%A, %B %d, %Y"
 
 
-dateTimeFormatter : Date -> String
-dateTimeFormatter =
-    Date.Extra.Format.format config dateTimePattern
+dateTimeFormatter : Maybe String -> Date -> String
+dateTimeFormatter lang =
+    let
+        conf =
+            case lang of
+                Nothing ->
+                    Date.Extra.Config.Config_en_us.config
+
+                Just str ->
+                    if str == "es" then
+                        Date.Extra.Config.Config_es_es.config
+                    else
+                        Date.Extra.Config.Config_en_us.config
+    in
+    Date.Extra.Format.format conf dateTimePattern
 
 
 dateTimePattern : String
@@ -94,9 +106,21 @@ dateTimePattern =
     "%m/%d/%Y %I:%M %p"
 
 
-timeFormatter : Date -> String
-timeFormatter =
-    Date.Extra.Format.format config timePattern
+timeFormatter : Maybe String -> Date -> String
+timeFormatter lang =
+    let
+        conf =
+            case lang of
+                Nothing ->
+                    Date.Extra.Config.Config_en_us.config
+
+                Just str ->
+                    if str == "es" then
+                        Date.Extra.Config.Config_es_es.config
+                    else
+                        Date.Extra.Config.Config_en_us.config
+    in
+    Date.Extra.Format.format conf timePattern
 
 
 timePattern : String
