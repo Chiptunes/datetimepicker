@@ -13,12 +13,23 @@ module DateTimePicker.Formatter
         )
 
 import Date exposing (Date)
-import Date.Extra.Config.Config_en_us exposing (config)
+import Date.Extra.Config.Config_en_us
+import Date.Extra.Config.Config_es_es
 import Date.Extra.Format
+import Navigator exposing (language)
 
 
 titleFormatter : Date -> String
 titleFormatter =
+    let
+        config =
+            case language of
+                "es_ES" ->
+                    Date.Extra.Config.Config_es_es.config
+
+                _ ->
+                    Date.Extra.Config.Config_en_us.config
+    in
     Date.Extra.Format.format config titlePattern
 
 
@@ -29,6 +40,15 @@ titlePattern =
 
 dateFormatter : Date -> String
 dateFormatter =
+    let
+        config =
+            case language of
+                "es_ES" ->
+                    Date.Extra.Config.Config_es_es.config
+
+                _ ->
+                    Date.Extra.Config.Config_en_us.config
+    in
     Date.Extra.Format.format config datePattern
 
 
@@ -39,6 +59,15 @@ datePattern =
 
 footerFormatter : Date -> String
 footerFormatter =
+    let
+        config =
+            case language of
+                "es_ES" ->
+                    Date.Extra.Config.Config_es_es.config
+
+                _ ->
+                    Date.Extra.Config.Config_en_us.config
+    in
     Date.Extra.Format.format config footerPattern
 
 
@@ -49,6 +78,15 @@ footerPattern =
 
 dateTimeFormatter : Date -> String
 dateTimeFormatter =
+    let
+        config =
+            case language of
+                "es_ES" ->
+                    Date.Extra.Config.Config_es_es.config
+
+                _ ->
+                    Date.Extra.Config.Config_en_us.config
+    in
     Date.Extra.Format.format config dateTimePattern
 
 
@@ -59,6 +97,15 @@ dateTimePattern =
 
 timeFormatter : Date -> String
 timeFormatter =
+    let
+        config =
+            case language of
+                "es_ES" ->
+                    Date.Extra.Config.Config_es_es.config
+
+                _ ->
+                    Date.Extra.Config.Config_en_us.config
+    in
     Date.Extra.Format.format config timePattern
 
 
