@@ -8,7 +8,6 @@
 
 The date and time picker can be used in two modes:
 
-
 * Analog Time Picker
 * Digital Time Picker
 

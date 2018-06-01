@@ -13,23 +13,12 @@ module DateTimePicker.Formatter
         )
 
 import Date exposing (Date)
-import Date.Extra.Config.Config_en_us
-import Date.Extra.Config.Config_es_es
+import Date.Extra.Config.Config_en_us exposing (config)
 import Date.Extra.Format
-import Navigator exposing (language)
 
 
 titleFormatter : Date -> String
 titleFormatter =
-    let
-        config =
-            case language of
-                "es_ES" ->
-                    Date.Extra.Config.Config_es_es.config
-
-                _ ->
-                    Date.Extra.Config.Config_en_us.config
-    in
     Date.Extra.Format.format config titlePattern
 
 
@@ -40,34 +29,16 @@ titlePattern =
 
 dateFormatter : Date -> String
 dateFormatter =
-    let
-        config =
-            case language of
-                "es_ES" ->
-                    Date.Extra.Config.Config_es_es.config
-
-                _ ->
-                    Date.Extra.Config.Config_en_us.config
-    in
     Date.Extra.Format.format config datePattern
 
 
 datePattern : String
 datePattern =
-    "%d %b %Y"
+    "%m/%d/%Y"
 
 
 footerFormatter : Date -> String
 footerFormatter =
-    let
-        config =
-            case language of
-                "es_ES" ->
-                    Date.Extra.Config.Config_es_es.config
-
-                _ ->
-                    Date.Extra.Config.Config_en_us.config
-    in
     Date.Extra.Format.format config footerPattern
 
 
@@ -79,17 +50,6 @@ footerPattern =
 dateTimeFormatter : Date -> String
 dateTimeFormatter =
     Date.Extra.Format.format config dateTimePattern
-<<<<<<< HEAD
-
-                Just str ->
-                    if str == "es" then
-                        Date.Extra.Config.Config_es_es.config
-                    else
-                        Date.Extra.Config.Config_en_us.config
-    in
-    Date.Extra.Format.format conf dateTimePattern
-=======
->>>>>>> parent of 75d130c... Solved bugs with Lang support
 
 
 dateTimePattern : String
@@ -99,28 +59,7 @@ dateTimePattern =
 
 timeFormatter : Date -> String
 timeFormatter =
-<<<<<<< HEAD
-    let
-        config =
-            case language of
-                "es_ES" ->
-                    Date.Extra.Config.Config_es_es.config
-
-                _ ->
-                    Date.Extra.Config.Config_en_us.config
-    in
     Date.Extra.Format.format config timePattern
-
-                Just str ->
-                    if str == "es" then
-                        Date.Extra.Config.Config_es_es.config
-                    else
-                        Date.Extra.Config.Config_en_us.config
-    in
-    Date.Extra.Format.format conf timePattern
-=======
-    Date.Extra.Format.format config timePattern
->>>>>>> parent of 75d130c... Solved bugs with Lang support
 
 
 timePattern : String

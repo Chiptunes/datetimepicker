@@ -52,7 +52,7 @@ import DateTimePicker.Internal exposing (InternalState(..), Time)
 import DateTimePicker.SharedStyles exposing (CssClasses(..))
 import DigitalTimePickerPanel
 import Html exposing (Html, button, div, input, li, span, table, tbody, td, text, th, thead, tr, ul)
-import Html.Attributes exposing (type_, value)
+import Html.Attributes exposing (value)
 import Html.Events exposing (onBlur, onClick, onFocus)
 import MultiPanel
 import Task
@@ -268,15 +268,8 @@ view pickerType attributes ((InternalState stateValue) as state) currentDate =
                         (inputChangeHandler config state currentDate)
                    , currentDate
                         |> Maybe.map config.i18n.inputFormat.inputFormatter
-<<<<<<< HEAD
                         |> Maybe.withDefault ""
                         |> value
-                   , type_ "button"
-=======
-                        |> Just config.language
-                        |> Maybe.withDefault ""
-                        |> value
->>>>>>> parent of 75d130c... Solved bugs with Lang support
                    ]
 
         shouldForceClose config =
