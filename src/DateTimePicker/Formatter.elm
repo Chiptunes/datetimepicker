@@ -32,14 +32,6 @@ titleFormatter =
     in
     Date.Extra.Format.format config titlePattern
 
-                Just str ->
-                    if str == "es" then
-                        Date.Extra.Config.Config_es_es.config
-                    else
-                        Date.Extra.Config.Config_en_us.config
-    in
-    Date.Extra.Format.format conf titlePattern
-
 
 titlePattern : String
 titlePattern =
@@ -59,14 +51,6 @@ dateFormatter =
     in
     Date.Extra.Format.format config datePattern
 
-                Just str ->
-                    if str == "es" then
-                        Date.Extra.Config.Config_es_es.config
-                    else
-                        Date.Extra.Config.Config_en_us.config
-    in
-    Date.Extra.Format.format conf datePattern
-
 
 datePattern : String
 datePattern =
@@ -85,14 +69,6 @@ footerFormatter =
                     Date.Extra.Config.Config_en_us.config
     in
     Date.Extra.Format.format config footerPattern
-
-                Just str ->
-                    if str == "es" then
-                        Date.Extra.Config.Config_es_es.config
-                    else
-                        Date.Extra.Config.Config_en_us.config
-    in
-    Date.Extra.Format.format conf footerPattern
 
 
 footerPattern : String
