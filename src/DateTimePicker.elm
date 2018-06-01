@@ -52,7 +52,7 @@ import DateTimePicker.Internal exposing (InternalState(..), Time)
 import DateTimePicker.SharedStyles exposing (CssClasses(..))
 import DigitalTimePickerPanel
 import Html exposing (Html, button, div, input, li, span, table, tbody, td, text, th, thead, tr, ul)
-import Html.Attributes exposing (value)
+import Html.Attributes exposing (type_, value)
 import Html.Events exposing (onBlur, onClick, onFocus)
 import MultiPanel
 import Task
@@ -270,6 +270,7 @@ view pickerType attributes ((InternalState stateValue) as state) currentDate =
                         |> Maybe.map config.i18n.inputFormat.inputFormatter
                         |> Maybe.withDefault ""
                         |> value
+                   , type_ "button"
                    ]
 
         shouldForceClose config =
