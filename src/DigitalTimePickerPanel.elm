@@ -24,7 +24,7 @@ type alias State =
 type alias Config otherConfig msg =
     { otherConfig
         | onChange : State -> Maybe Date -> msg
-        , titleFormatter : Date -> String
+        , titleFormatter : Maybe String -> Date -> String
     }
 
 
@@ -159,10 +159,18 @@ view config ((InternalState stateValue) as state) currentDate =
                 , td [] []
                 ]
             ]
+
+        date =
+            case currentDate of
+                Nothing ->
+                    Date.fromTime 0
+
+                Just d ->
+                    d
     in
     div [ config.class [ TimePickerDialog, DigitalTime ] ]
         [ div [ config.class [ Header ] ]
-            [ Maybe.map config.titleFormatter currentDate |> Maybe.withDefault "-- : --" |> text ]
+            [ text (config.titleFormatter (Just "en") date) ]
         , div [ config.class [ Body ] ]
             [ table []
                 [ tbody []
