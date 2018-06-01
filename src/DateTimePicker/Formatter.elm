@@ -32,6 +32,14 @@ titleFormatter =
     in
     Date.Extra.Format.format config titlePattern
 
+                Just str ->
+                    if str == "es" then
+                        Date.Extra.Config.Config_es_es.config
+                    else
+                        Date.Extra.Config.Config_en_us.config
+    in
+    Date.Extra.Format.format conf titlePattern
+
 
 titlePattern : String
 titlePattern =
@@ -50,6 +58,14 @@ dateFormatter =
                     Date.Extra.Config.Config_en_us.config
     in
     Date.Extra.Format.format config datePattern
+
+                Just str ->
+                    if str == "es" then
+                        Date.Extra.Config.Config_es_es.config
+                    else
+                        Date.Extra.Config.Config_en_us.config
+    in
+    Date.Extra.Format.format conf datePattern
 
 
 datePattern : String
@@ -70,6 +86,14 @@ footerFormatter =
     in
     Date.Extra.Format.format config footerPattern
 
+                Just str ->
+                    if str == "es" then
+                        Date.Extra.Config.Config_es_es.config
+                    else
+                        Date.Extra.Config.Config_en_us.config
+    in
+    Date.Extra.Format.format conf footerPattern
+
 
 footerPattern : String
 footerPattern =
@@ -78,16 +102,15 @@ footerPattern =
 
 dateTimeFormatter : Date -> String
 dateTimeFormatter =
-    let
-        config =
-            case language of
-                "es_ES" ->
-                    Date.Extra.Config.Config_es_es.config
-
-                _ ->
-                    Date.Extra.Config.Config_en_us.config
-    in
     Date.Extra.Format.format config dateTimePattern
+
+                Just str ->
+                    if str == "es" then
+                        Date.Extra.Config.Config_es_es.config
+                    else
+                        Date.Extra.Config.Config_en_us.config
+    in
+    Date.Extra.Format.format conf dateTimePattern
 
 
 dateTimePattern : String
@@ -107,6 +130,14 @@ timeFormatter =
                     Date.Extra.Config.Config_en_us.config
     in
     Date.Extra.Format.format config timePattern
+
+                Just str ->
+                    if str == "es" then
+                        Date.Extra.Config.Config_es_es.config
+                    else
+                        Date.Extra.Config.Config_en_us.config
+    in
+    Date.Extra.Format.format conf timePattern
 
 
 timePattern : String

@@ -68,6 +68,7 @@ type alias Config otherConfig msg =
         , autoClose : Bool
         , i18n : I18n
         , usePicker : Bool
+        , language : String
         , attributes : List (Html.Attribute msg)
     }
 
@@ -92,9 +93,9 @@ type alias CssConfig otherConfig msg className =
 
 -}
 type alias I18n =
-    { titleFormatter : Date -> String
-    , footerFormatter : Date -> String
-    , timeTitleFormatter : Date -> String
+    { titleFormatter : Maybe String -> Date -> String
+    , footerFormatter : Maybe String -> Date -> String
+    , timeTitleFormatter : Maybe String -> Date -> String
     , inputFormat : InputFormat
     }
 
@@ -123,7 +124,7 @@ type alias DatePickerConfig otherConfig =
 
 -}
 type alias InputFormat =
-    { inputFormatter : Date -> String
+    { inputFormatter : Maybe String -> Date -> String
     , inputParser : String -> Maybe Date
     }
 
@@ -256,6 +257,7 @@ defaultDatePickerConfig onChange =
     , usePicker = True
     , attributes = []
     , class = defaultClass
+    , language = "en"
     }
 
 
@@ -272,6 +274,7 @@ defaultDatePickerConfig onChange =
 defaultTimePickerConfig : (State -> Maybe Date -> msg) -> Config (CssConfig TimePickerConfig msg className) msg
 defaultTimePickerConfig onChange =
     { onChange = onChange
+    , language = "en"
     , autoClose = False
     , timePickerType = Analog
     , i18n = defaultTimeI18n
@@ -308,6 +311,7 @@ defaultDateTimePickerConfig onChange =
     , usePicker = True
     , attributes = []
     , class = defaultClass
+    , language = "en"
     }
 
 

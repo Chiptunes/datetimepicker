@@ -260,6 +260,14 @@ view pickerType attributes ((InternalState stateValue) as state) currentDate =
         timeFormatter dateTimePickerConfig =
             dateTimePickerConfig.timeFormatter
 
+        dateValue =
+            case currentDate of
+                Nothing ->
+                    Date.fromTime 1
+
+                Just d ->
+                    d
+
         inputAttributes config =
             attributes
                 ++ [ onFocus (datePickerFocused pickerType config state currentDate)
@@ -363,11 +371,13 @@ dialog pickerType (InternalState state) currentDate =
                     , titleFormatter = config.i18n.titleFormatter
                     , footerFormatter = config.i18n.footerFormatter
                     , class = config.class
+                    , language = config.language
                     }
                     ( config.timePickerType
                     , { onChange = config.onChange
                       , titleFormatter = config.i18n.timeTitleFormatter
                       , class = config.class
+                      , language = config.language
                       }
                     )
                     (InternalState state)

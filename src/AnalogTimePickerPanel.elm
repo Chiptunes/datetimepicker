@@ -25,7 +25,7 @@ type alias State =
 type alias Config otherConfig msg =
     { otherConfig
         | onChange : State -> Maybe Date -> msg
-        , titleFormatter : Date -> String
+        , titleFormatter : Maybe String -> Date -> String
     }
 
 
