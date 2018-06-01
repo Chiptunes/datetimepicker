@@ -92,9 +92,9 @@ type alias CssConfig otherConfig msg className =
 
 -}
 type alias I18n =
-    { titleFormatter : Maybe String -> Date -> String
-    , footerFormatter : Maybe String -> Date -> String
-    , timeTitleFormatter : Maybe String -> Date -> String
+    { titleFormatter : Date -> String
+    , footerFormatter : Date -> String
+    , timeTitleFormatter : Date -> String
     , inputFormat : InputFormat
     }
 
@@ -123,7 +123,7 @@ type alias DatePickerConfig otherConfig =
 
 -}
 type alias InputFormat =
-    { inputFormatter : Maybe String -> Date -> String
+    { inputFormatter : Date -> String
     , inputParser : String -> Maybe Date
     }
 
@@ -272,7 +272,6 @@ defaultDatePickerConfig onChange =
 defaultTimePickerConfig : (State -> Maybe Date -> msg) -> Config (CssConfig TimePickerConfig msg className) msg
 defaultTimePickerConfig onChange =
     { onChange = onChange
-    , language = "en"
     , autoClose = False
     , timePickerType = Analog
     , i18n = defaultTimeI18n
@@ -309,7 +308,6 @@ defaultDateTimePickerConfig onChange =
     , usePicker = True
     , attributes = []
     , class = defaultClass
-    , language = "en"
     }
 
 

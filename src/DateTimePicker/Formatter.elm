@@ -79,6 +79,7 @@ footerPattern =
 dateTimeFormatter : Date -> String
 dateTimeFormatter =
     Date.Extra.Format.format config dateTimePattern
+<<<<<<< HEAD
 
                 Just str ->
                     if str == "es" then
@@ -87,6 +88,8 @@ dateTimeFormatter =
                         Date.Extra.Config.Config_en_us.config
     in
     Date.Extra.Format.format conf dateTimePattern
+=======
+>>>>>>> parent of 75d130c... Solved bugs with Lang support
 
 
 dateTimePattern : String
@@ -96,6 +99,7 @@ dateTimePattern =
 
 timeFormatter : Date -> String
 timeFormatter =
+<<<<<<< HEAD
     let
         config =
             case language of
@@ -114,6 +118,9 @@ timeFormatter =
                         Date.Extra.Config.Config_en_us.config
     in
     Date.Extra.Format.format conf timePattern
+=======
+    Date.Extra.Format.format config timePattern
+>>>>>>> parent of 75d130c... Solved bugs with Lang support
 
 
 timePattern : String

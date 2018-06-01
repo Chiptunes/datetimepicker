@@ -26,8 +26,8 @@ type alias Config otherConfig msg =
         , nameOfDays : NameOfDays
         , firstDayOfWeek : Date.Day
         , allowYearNavigation : Bool
-        , titleFormatter : Maybe String -> Date -> String
-        , footerFormatter : Maybe String -> Date -> String
+        , titleFormatter : Date -> String
+        , footerFormatter : Date -> String
     }
 
 
@@ -98,25 +98,13 @@ gotoPreviousYear (InternalState state) =
 
 view : Config (CssConfig a msg CssClasses) msg -> State -> Maybe Date -> Html msg
 view config ((InternalState stateValue) as state) currentDate =
-    let
-        date =
-            case stateValue.date of
-                Nothing ->
-                    Date.fromTime 0
-
-                Just d ->
-                    d
-
-        dateText =
-            config.footerFormatter (Just "en") date
-    in
     div [ config.class [ DatePickerDialog ] ]
         [ div [ config.class [ Header ] ]
             (navigation config state currentDate)
         , calendar config state currentDate
         , div
             [ config.class [ Footer ] ]
-            [ text dateText ]
+            [ stateValue.date |> Maybe.map config.footerFormatter |> Maybe.withDefault "--" |> text ]
         ]
 
 
@@ -134,18 +122,16 @@ title : Config (CssConfig a msg CssClasses) msg -> State -> Maybe Date.Date -> H
 title config ((InternalState stateValue) as state) currentDate =
     let
         date =
-            case stateValue.titleDate of
-                Nothing ->
-                    Date.fromTime 1
-
-                Just d ->
-                    d
+            stateValue.titleDate
     in
     span
         [ config.class [ Title ]
         , onMouseDownPreventDefault <| config.onChange (switchMode state) currentDate
         ]
-        [ text (config.titleFormatter (Just "en") date)
+        [ date
+            |> Maybe.map config.titleFormatter
+            |> Maybe.withDefault "N/A"
+            |> text
         ]
 
 

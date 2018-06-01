@@ -260,14 +260,6 @@ view pickerType attributes ((InternalState stateValue) as state) currentDate =
         timeFormatter dateTimePickerConfig =
             dateTimePickerConfig.timeFormatter
 
-        dateValue =
-            case currentDate of
-                Nothing ->
-                    Date.fromTime 1
-
-                Just d ->
-                    d
-
         inputAttributes config =
             attributes
                 ++ [ onFocus (datePickerFocused pickerType config state currentDate)
@@ -276,9 +268,15 @@ view pickerType attributes ((InternalState stateValue) as state) currentDate =
                         (inputChangeHandler config state currentDate)
                    , currentDate
                         |> Maybe.map config.i18n.inputFormat.inputFormatter
+<<<<<<< HEAD
                         |> Maybe.withDefault ""
                         |> value
                    , type_ "button"
+=======
+                        |> Just config.language
+                        |> Maybe.withDefault ""
+                        |> value
+>>>>>>> parent of 75d130c... Solved bugs with Lang support
                    ]
 
         shouldForceClose config =
@@ -371,13 +369,11 @@ dialog pickerType (InternalState state) currentDate =
                     , titleFormatter = config.i18n.titleFormatter
                     , footerFormatter = config.i18n.footerFormatter
                     , class = config.class
-                    , language = config.language
                     }
                     ( config.timePickerType
                     , { onChange = config.onChange
                       , titleFormatter = config.i18n.timeTitleFormatter
                       , class = config.class
-                      , language = config.language
                       }
                     )
                     (InternalState state)
