@@ -54,7 +54,7 @@ dateFormatter =
 
 datePattern : String
 datePattern =
-    "%m/%d/%Y"
+    "%d %b %Y"
 
 
 footerFormatter : Date -> String
