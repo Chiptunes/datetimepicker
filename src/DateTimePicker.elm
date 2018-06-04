@@ -53,7 +53,7 @@ import DateTimePicker.SharedStyles exposing (CssClasses(..))
 import DigitalTimePickerPanel
 import Html exposing (Html, button, div, input, li, span, table, tbody, td, text, th, thead, tr, ul)
 import Html.Attributes exposing (type_, value)
-import Html.Events exposing (onBlur, onClick, onFocus)
+import Html.Events exposing (onBlur, onClick)
 import MultiPanel
 import Task
 
@@ -262,7 +262,7 @@ view pickerType attributes ((InternalState stateValue) as state) currentDate =
 
         inputAttributes config =
             attributes
-                ++ [ onFocus (datePickerFocused pickerType config state currentDate)
+                ++ [ onClick (datePickerFocused pickerType config state currentDate)
                    , onBlurWithChange
                         config.i18n.inputFormat.inputParser
                         (inputChangeHandler config state currentDate)
