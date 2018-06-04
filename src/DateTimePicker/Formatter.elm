@@ -33,7 +33,7 @@ titleFormatter =
                 _ ->
                     Date.Extra.Config.Config_en_us.config
     in
-    Date.Extra.Format.format Date.Extra.Config.Config_es_es.config titlePattern
+    Date.Extra.Format.format config titlePattern
 
 
 titlePattern : String
@@ -55,7 +55,7 @@ dateFormatter =
                 _ ->
                     Date.Extra.Config.Config_en_us.config
     in
-    Date.Extra.Format.format Date.Extra.Config.Config_es_es.config datePattern
+    Date.Extra.Format.format config datePattern
 
 
 datePattern : String
@@ -77,7 +77,7 @@ footerFormatter =
                 _ ->
                     Date.Extra.Config.Config_en_us.config
     in
-    Date.Extra.Format.format Date.Extra.Config.Config_es_es.config footerPattern
+    Date.Extra.Format.format config footerPattern
 
 
 footerPattern : String
@@ -99,7 +99,7 @@ dateTimeFormatter =
                 _ ->
                     Date.Extra.Config.Config_en_us.config
     in
-    Date.Extra.Format.format Date.Extra.Config.Config_es_es.config dateTimePattern
+    Date.Extra.Format.format config dateTimePattern
 
 
 dateTimePattern : String
@@ -121,7 +121,7 @@ timeFormatter =
                 _ ->
                     Date.Extra.Config.Config_en_us.config
     in
-    Date.Extra.Format.format Date.Extra.Config.Config_es_es.config timePattern
+    Date.Extra.Format.format config timePattern
 
 
 timePattern : String
