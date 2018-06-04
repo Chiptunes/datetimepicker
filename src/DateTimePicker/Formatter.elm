@@ -16,21 +16,21 @@ import Date exposing (Date)
 import Date.Extra.Config.Config_en_us
 import Date.Extra.Config.Config_es_es
 import Date.Extra.Format
-import Navigator exposing (language)
+import DateTimePicker.Env exposing (getEnv)
 
 
 titleFormatter : Date -> String
 titleFormatter =
     let
         config =
-            case language of
-                "es-ES" ->
+            case getEnv.language of
+                "es" ->
                     Date.Extra.Config.Config_es_es.config
 
                 _ ->
                     Date.Extra.Config.Config_en_us.config
     in
-    Date.Extra.Format.format config titlePattern
+    Date.Extra.Format.format Date.Extra.Config.Config_es_es.config titlePattern
 
 
 titlePattern : String
@@ -42,14 +42,14 @@ dateFormatter : Date -> String
 dateFormatter =
     let
         config =
-            case language of
-                "es-ES" ->
+            case getEnv.language of
+                "es" ->
                     Date.Extra.Config.Config_es_es.config
 
                 _ ->
                     Date.Extra.Config.Config_en_us.config
     in
-    Date.Extra.Format.format config datePattern
+    Date.Extra.Format.format Date.Extra.Config.Config_es_es.config datePattern
 
 
 datePattern : String
@@ -61,14 +61,14 @@ footerFormatter : Date -> String
 footerFormatter =
     let
         config =
-            case language of
-                "es-ES" ->
+            case getEnv.language of
+                "es" ->
                     Date.Extra.Config.Config_es_es.config
 
                 _ ->
                     Date.Extra.Config.Config_en_us.config
     in
-    Date.Extra.Format.format config footerPattern
+    Date.Extra.Format.format Date.Extra.Config.Config_es_es.config footerPattern
 
 
 footerPattern : String
@@ -80,14 +80,14 @@ dateTimeFormatter : Date -> String
 dateTimeFormatter =
     let
         config =
-            case language of
-                "es-ES" ->
+            case getEnv.language of
+                "es" ->
                     Date.Extra.Config.Config_es_es.config
 
                 _ ->
                     Date.Extra.Config.Config_en_us.config
     in
-    Date.Extra.Format.format config dateTimePattern
+    Date.Extra.Format.format Date.Extra.Config.Config_es_es.config dateTimePattern
 
 
 dateTimePattern : String
@@ -99,14 +99,14 @@ timeFormatter : Date -> String
 timeFormatter =
     let
         config =
-            case language of
-                "es-ES" ->
+            case getEnv.language of
+                "es" ->
                     Date.Extra.Config.Config_es_es.config
 
                 _ ->
                     Date.Extra.Config.Config_en_us.config
     in
-    Date.Extra.Format.format config timePattern
+    Date.Extra.Format.format Date.Extra.Config.Config_es_es.config timePattern
 
 
 timePattern : String
