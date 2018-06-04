@@ -22,9 +22,6 @@ import DateTimePicker.Env exposing (getEnv)
 titleFormatter : Date -> String
 titleFormatter =
     let
-        _ =
-            Debug.log "lang" ( getEnv.language, getEnv.language == "es" )
-
         config =
             case getEnv.language of
                 "es" ->
@@ -44,9 +41,6 @@ titlePattern =
 dateFormatter : Date -> String
 dateFormatter =
     let
-        _ =
-            Debug.log "lang" getEnv.language
-
         config =
             case getEnv.language of
                 "es" ->
@@ -66,9 +60,6 @@ datePattern =
 footerFormatter : Date -> String
 footerFormatter =
     let
-        _ =
-            Debug.log "lang" getEnv.language
-
         config =
             case getEnv.language of
                 "es" ->
@@ -88,9 +79,6 @@ footerPattern =
 dateTimeFormatter : Date -> String
 dateTimeFormatter =
     let
-        _ =
-            Debug.log "lang" getEnv.language
-
         config =
             case getEnv.language of
                 "es" ->
@@ -110,9 +98,6 @@ dateTimePattern =
 timeFormatter : Date -> String
 timeFormatter =
     let
-        _ =
-            Debug.log "lang" getEnv.language
-
         config =
             case getEnv.language of
                 "es" ->
