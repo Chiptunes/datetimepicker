@@ -102,9 +102,6 @@ view config ((InternalState stateValue) as state) currentDate =
         [ div [ config.class [ Header ] ]
             (navigation config state currentDate)
         , calendar config state currentDate
-        , div
-            [ config.class [ Footer ] ]
-            [ stateValue.date |> Maybe.map config.footerFormatter |> Maybe.withDefault "--" |> text ]
         ]
 
 
