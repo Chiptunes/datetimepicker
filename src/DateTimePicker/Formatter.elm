@@ -23,7 +23,7 @@ titleFormatter : Date -> String
 titleFormatter =
     let
         _ =
-            Debug.log "lang" getEnv.language
+            Debug.log "lang" ( getEnv.language, getEnv.language == "es" )
 
         config =
             case getEnv.language of
