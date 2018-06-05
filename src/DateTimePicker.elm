@@ -52,7 +52,7 @@ import DateTimePicker.Internal exposing (InternalState(..), Time)
 import DateTimePicker.SharedStyles exposing (CssClasses(..))
 import DigitalTimePickerPanel
 import Html exposing (Html, button, div, input, label, li, span, table, tbody, td, text, th, thead, tr, ul)
-import Html.Attributes exposing (type_, value)
+import Html.Attributes exposing (tabindex, type_, value)
 import Html.Events exposing (onBlur, onClick)
 import MultiPanel
 import Task
@@ -266,6 +266,7 @@ view pickerType attributes ((InternalState stateValue) as state) currentDate =
                    , onBlurWithChange
                         config.i18n.inputFormat.inputParser
                         (inputChangeHandler config state currentDate)
+                   , tabindex -1
                    ]
 
         shouldForceClose config =
@@ -274,11 +275,13 @@ view pickerType attributes ((InternalState stateValue) as state) currentDate =
         html config cssClasses =
             div
                 (cssClasses :: config.attributes)
-                [ span (inputAttributes config)
-                    [ currentDate
-                        |> Maybe.map config.i18n.inputFormat.inputFormatter
-                        |> Maybe.withDefault ""
-                        |> text
+                [ button [ type_ "button", tabindex 0 ]
+                    [ span (inputAttributes config)
+                        [ currentDate
+                            |> Maybe.map config.i18n.inputFormat.inputFormatter
+                            |> Maybe.withDefault ""
+                            |> text
+                        ]
                     ]
                 , if config.usePicker && stateValue.inputFocused && not (shouldForceClose config) then
                     dialog pickerType state currentDate
