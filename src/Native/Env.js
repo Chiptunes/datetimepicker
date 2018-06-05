@@ -9,9 +9,7 @@ var _chiptunes$datetimepicker$Native_Env = function() {
       coowryEnv: env.coowry_env,
       version: env.version,
       staticUrl: env.static_url,
-      language: env.language,
-      languages: _elm_lang$core$Native_List.fromArray(env.languages),
-      countries: _elm_lang$core$Native_List.fromArray(env.countries)
+      language: env.language
     }
   };
 
