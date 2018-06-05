@@ -51,7 +51,7 @@ import DateTimePicker.Events exposing (onBlurWithChange, onMouseDownPreventDefau
 import DateTimePicker.Internal exposing (InternalState(..), Time)
 import DateTimePicker.SharedStyles exposing (CssClasses(..))
 import DigitalTimePickerPanel
-import Html exposing (Html, button, div, input, li, span, table, tbody, td, text, th, thead, tr, ul)
+import Html exposing (Html, button, div, input, label, li, span, table, tbody, td, text, th, thead, tr, ul)
 import Html.Attributes exposing (type_, value)
 import Html.Events exposing (onBlur, onClick)
 import MultiPanel
