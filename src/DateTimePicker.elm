@@ -270,7 +270,6 @@ view pickerType attributes ((InternalState stateValue) as state) currentDate =
                         |> Maybe.map config.i18n.inputFormat.inputFormatter
                         |> Maybe.withDefault ""
                         |> value
-                   , type_ "button"
                    ]
 
         shouldForceClose config =
@@ -279,7 +278,7 @@ view pickerType attributes ((InternalState stateValue) as state) currentDate =
         html config cssClasses =
             div
                 (cssClasses :: config.attributes)
-                [ input (inputAttributes config) []
+                [ label (inputAttributes config) []
                 , if config.usePicker && stateValue.inputFocused && not (shouldForceClose config) then
                     dialog pickerType state currentDate
                   else
