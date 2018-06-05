@@ -266,10 +266,6 @@ view pickerType attributes ((InternalState stateValue) as state) currentDate =
                    , onBlurWithChange
                         config.i18n.inputFormat.inputParser
                         (inputChangeHandler config state currentDate)
-                   , currentDate
-                        |> Maybe.map config.i18n.inputFormat.inputFormatter
-                        |> Maybe.withDefault ""
-                        |> value
                    ]
 
         shouldForceClose config =
@@ -278,7 +274,12 @@ view pickerType attributes ((InternalState stateValue) as state) currentDate =
         html config cssClasses =
             div
                 (cssClasses :: config.attributes)
-                [ label (inputAttributes config) []
+                [ span (inputAttributes config)
+                    [ currentDate
+                        |> Maybe.map config.i18n.inputFormat.inputFormatter
+                        |> Maybe.withDefault ""
+                        |> text
+                    ]
                 , if config.usePicker && stateValue.inputFocused && not (shouldForceClose config) then
                     dialog pickerType state currentDate
                   else
