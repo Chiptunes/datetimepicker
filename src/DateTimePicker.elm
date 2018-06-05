@@ -51,8 +51,8 @@ import DateTimePicker.Events exposing (onBlurWithChange, onMouseDownPreventDefau
 import DateTimePicker.Internal exposing (InternalState(..), Time)
 import DateTimePicker.SharedStyles exposing (CssClasses(..))
 import DigitalTimePickerPanel
-import Html exposing (Html, button, div, input, label, li, span, table, tbody, td, text, th, thead, tr, ul)
-import Html.Attributes exposing (tabindex, type_, value)
+import Html exposing (Html, button, div, input, li, span, table, tbody, td, text, th, thead, tr, ul)
+import Html.Attributes exposing (type_, value)
 import Html.Events exposing (onBlur, onClick)
 import MultiPanel
 import Task
@@ -262,7 +262,16 @@ view pickerType attributes ((InternalState stateValue) as state) currentDate =
 
         inputAttributes config =
             attributes
-                ++ [ tabindex -1
+                ++ [ onClick (datePickerFocused pickerType config state currentDate)
+                   , onBlurWithChange
+                        config.i18n.inputFormat.inputParser
+                        (inputChangeHandler config state currentDate)
+                   , currentDate
+                        |> Maybe.map config.i18n.inputFormat.inputFormatter
+                        |> Maybe.withDefault ""
+                        |> value
+                   , type_ "text"
+                   , class "input-date-picker"
                    ]
 
         shouldForceClose config =
@@ -271,21 +280,7 @@ view pickerType attributes ((InternalState stateValue) as state) currentDate =
         html config cssClasses =
             div
                 (cssClasses :: config.attributes)
-                [ button
-                    [ type_ "button"
-                    , onClick (datePickerFocused pickerType config state currentDate)
-                    , onBlurWithChange
-                        config.i18n.inputFormat.inputParser
-                        (inputChangeHandler config state currentDate)
-                    , tabindex 0
-                    ]
-                    [ span (inputAttributes config)
-                        [ currentDate
-                            |> Maybe.map config.i18n.inputFormat.inputFormatter
-                            |> Maybe.withDefault ""
-                            |> text
-                        ]
-                    ]
+                [ input (inputAttributes config) []
                 , if config.usePicker && stateValue.inputFocused && not (shouldForceClose config) then
                     dialog pickerType state currentDate
                   else
