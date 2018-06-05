@@ -52,7 +52,7 @@ import DateTimePicker.Internal exposing (InternalState(..), Time)
 import DateTimePicker.SharedStyles exposing (CssClasses(..))
 import DigitalTimePickerPanel
 import Html exposing (Html, button, div, input, li, span, table, tbody, td, text, th, thead, tr, ul)
-import Html.Attributes exposing (type_, value)
+import Html.Attributes exposing (class, type_, value)
 import Html.Events exposing (onBlur, onClick)
 import MultiPanel
 import Task
