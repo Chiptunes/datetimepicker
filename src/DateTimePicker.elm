@@ -262,11 +262,7 @@ view pickerType attributes ((InternalState stateValue) as state) currentDate =
 
         inputAttributes config =
             attributes
-                ++ [ onClick (datePickerFocused pickerType config state currentDate)
-                   , onBlurWithChange
-                        config.i18n.inputFormat.inputParser
-                        (inputChangeHandler config state currentDate)
-                   , tabindex -1
+                ++ [ tabindex -1
                    ]
 
         shouldForceClose config =
@@ -275,7 +271,14 @@ view pickerType attributes ((InternalState stateValue) as state) currentDate =
         html config cssClasses =
             div
                 (cssClasses :: config.attributes)
-                [ button [ type_ "button", tabindex 0 ]
+                [ button
+                    [ type_ "button"
+                    , onClick (datePickerFocused pickerType config state currentDate)
+                    , onBlurWithChange
+                        config.i18n.inputFormat.inputParser
+                        (inputChangeHandler config state currentDate)
+                    , tabindex 0
+                    ]
                     [ span (inputAttributes config)
                         [ currentDate
                             |> Maybe.map config.i18n.inputFormat.inputFormatter
